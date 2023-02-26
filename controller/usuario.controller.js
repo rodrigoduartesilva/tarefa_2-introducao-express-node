@@ -1,23 +1,4 @@
-const usuarios = [
-    {
-        id: 1,
-        nome: 'Rodrigo',
-        sobrenome: 'Duarte',
-        idade: 42
-    },
-    {
-        id: 2,
-        nome: 'Samira',
-        sobrenome: 'Silva',
-        idade: 12
-    },
-    {
-        id: 3,
-        nome: 'Mauricio',
-        sobrenome: 'Silva',
-        idade: 60
-    }
-];
+const usuarios = require('../usuarios');
 
 const find = (req, res) => {
     const id = req.params.id;
@@ -60,7 +41,7 @@ const createUsuario = (req, res) => {
     }
 
     if (found) {
-        res.status(400).send({ message: `O usuário com o id ${usuario.id} já consta em nossa base de dados.` });
+        return res.status(400).send({ message: `O usuário com o id ${usuario.id} já consta em nossa base de dados.` });
     }
 
     if (!usuario.nome) {
